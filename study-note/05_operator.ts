@@ -28,8 +28,19 @@ interface Person {
   name: string;
   age: string;
 }
+// | - 유니온 (실무적으로는 이게 많이 쓰임.)
 function askSomeone(someone: Developer | Person) {
   someone.name; // 공통된 특성에만 접근할 수 있음.
-  someone.skill; // 만약 접근하고 싶으면 위에 사용했떤 Type Guard 를 사용하면 됨.
+  // someone.skill; // 만약 접근하고 싶으면 위에 사용했떤 Type Guard 를 사용하면 됨.
+  // someone.age;
+}
+
+// & - 인터섹션
+function askSomeone2(someone: Developer & Person) {
+  someone.name;
+  someone.skill;
   someone.age;
 }
+
+// var seho: string | number | boolean;
+// var seho: string & number & boolean;
