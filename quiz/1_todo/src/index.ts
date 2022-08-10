@@ -24,7 +24,10 @@ function deleteTodo(index: number): void {
   todoItems.splice(index, 1);
 }
 
-function completeTodo(index: number, todo: object): void {
+function completeTodo(
+  index: number,
+  todo: { id: number; title: string; done: boolean }
+): void {
   todo.done = true;
   todoItems.splice(index, 1, todo);
 }
