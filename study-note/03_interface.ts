@@ -10,6 +10,7 @@ var seho: User = {
 };
 
 // 함수에 인터페이스 활용
+// 프론트엔드 프레임워크, 라이브러리에서 API통신을 할때 아주 유용~
 function getUser(user: User) {
   console.log(user);
 }
@@ -18,3 +19,15 @@ const hulk = {
   age: 46,
 };
 getUser(hulk);
+
+// 함수의 스펙(구조)에 인터페이스를 활용
+// 라이브러리를 만든다고 했을 때 유용할 수 있을 것...!
+interface SumFunction {
+  (a: number, b: number): number;
+}
+
+var sum: SumFunction;
+
+sum = function (a: number, b: number): number {
+  return a + b;
+};
