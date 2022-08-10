@@ -26,7 +26,7 @@ interface Developer {
 }
 interface Person {
   name: string;
-  age: string;
+  age: number;
 }
 // | - 유니온 (실무적으로는 이게 많이 쓰임.)
 function askSomeone(someone: Developer | Person) {
@@ -34,6 +34,8 @@ function askSomeone(someone: Developer | Person) {
   // someone.skill; // 만약 접근하고 싶으면 위에 사용했떤 Type Guard 를 사용하면 됨.
   // someone.age;
 }
+askSomeone({ name: "디벨로퍼", skill: "웹 개발" });
+askSomeone({ name: "토르", age: 1000 });
 
 // & - 인터섹션
 function askSomeone2(someone: Developer & Person) {
@@ -41,6 +43,8 @@ function askSomeone2(someone: Developer & Person) {
   someone.skill;
   someone.age;
 }
+askSomeone2({ name: "디벨로퍼", skill: "웹 개발", age: 37 });
+askSomeone2({ name: "토르", age: 1000, skill: "천둥" });
 
 // var seho: string | number | boolean;
 // var seho: string & number & boolean;
