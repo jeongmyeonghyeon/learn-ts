@@ -31,3 +31,11 @@ var sum: SumFunction;
 sum = function (a: number, b: number): number {
   return a + b;
 };
+
+// 인덱싱
+interface StringArray {
+  [index: number]: string;
+}
+
+var arr: StringArray = ["a", "b", "c"];
+// arr[0] = 10;
