@@ -33,3 +33,6 @@ var detailedItem: DetailedDropdown<string> = {
   value: "ghi",
   tag: "jkl",
 };
+
+// Best Common Type
+const arr = [1, "a", true];
