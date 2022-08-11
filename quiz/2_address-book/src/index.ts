@@ -105,6 +105,7 @@ class AddressBook {
   /* ------------------------------------------------ */
 }
 
+// 타입 단언(assertion) 
 var div = document.querySelector('div') as HTMLDivElement;
 
 new AddressBook();
