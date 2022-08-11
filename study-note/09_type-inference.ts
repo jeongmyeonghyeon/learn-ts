@@ -9,11 +9,27 @@ function getB(b = 20) {
 20 + "30"; // 2030
 
 // 타입 추론 기본 2
+// interface Dropdown<T> {
+//   value: T;
+//   title: string;
+// }
+// var shoppingItem: Dropdown<string> = {
+//   value: "abc",
+//   title: "hello",
+// };
+
+// 타입 추론 기본 3
 interface Dropdown<T> {
   value: T;
   title: string;
 }
-var shoppingItem: Dropdown<string> = {
-  value: "abc",
-  title: "hello",
+interface DetailedDropdown<K> extends Dropdown<K> {
+  description: string;
+  tag: K;
+}
+var detailedItem: DetailedDropdown<string> = {
+  title: "abc",
+  description: "def",
+  value: "ghi",
+  tag: "jkl",
 };
