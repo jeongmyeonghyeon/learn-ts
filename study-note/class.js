@@ -1,3 +1,9 @@
+function Hero(name, age) {
+  this.name = name;
+  this.age = age;
+}
+var hulk = new Hero("헐크", 47);
+
 // ES2015 (ES6) - 이제는 햇수로 8년째...
 class Person {
   // 클래스 로직
