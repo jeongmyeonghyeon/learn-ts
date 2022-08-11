@@ -28,9 +28,18 @@
 
 // 기존 문법과 제네릭의 차이점 - 유니온 타입을 이용한 선언 방식의 문제점
 // 파라미터는 해결됐지만, 반환값에 대한 해결이 이루어지지 않았음.
-function logText(text: string | number) {
+// function logText(text: string | number) {
+//   console.log(text);
+//   return text;
+// }
+// const a = logText("a");
+// logText(10);
+
+// 제네릭의 장점과 타입 추론에서의 이점
+function logText<T>(text: T): T {
   console.log(text);
   return text;
 }
-const a = logText("a");
-logText(10);
+const str = logText<string>("abc");
+str.split("");
+const login = logText<boolean>(true);
