@@ -58,5 +58,15 @@ const login = logText<boolean>(true);
 //   value: T;
 //   selected: boolean;
 // }
-
 // const obj: Dropdown<number> = { value: "10", selected: false };
+
+// 제네릭의 타입 제한
+function logTextLength<T>(text: T[]): T[] {
+  // 타입 힌트를 줄 수 있다.
+  console.log(text.length);
+  text.forEach(function (text) {
+    console.log(text);
+  });
+  return text;
+}
+logTextLength<string>(["hi", "ts"]);
