@@ -58,7 +58,8 @@ interface UserProfile {
 //   profilePhotoUrl?: UserProfile['profilePhotoUrl'];
 // }
 
-// #2 (Mapped Type), (Indexed signature)
+// #2 (Mapped Type), (Indexed signature?)
+// in 이 마치 자바스크립트의 for...in... 처럼 key를 검사해줄 것...
 // type UserProfileUpdate = {
 //   [p in 'username' | 'email' | 'profilePhotoUrl']? : UserProfile[p]
 // }
