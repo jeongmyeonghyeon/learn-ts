@@ -2,6 +2,8 @@
 
 최종 프로젝트 폴더입니다
 
+[프로젝트 진행 관련 참조사항]
+
 - [tsconfig.json의 checkJs(allowJS) 속성 설명](https://www.typescriptlang.org/tsconfig#checkJs)
 - [VSCode 마크다운 프리뷰 플러그인](https://marketplace.visualstudio.com/items?itemName=shd101wyy.markdown-preview-enhanced)
 - tsconfig.json의 include 디폴트 값 : [“**/*”]
