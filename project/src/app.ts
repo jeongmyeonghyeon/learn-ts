@@ -1,3 +1,8 @@
+// 라이브러리 로딩
+// import 변수명 from '라이브러리 이름';
+// 변수, 함수 임포트 문법
+// import {} from '파일 상대 경로';
+
 // utils
 function $(selector: string) {
   return document.querySelector(selector);
@@ -7,7 +12,7 @@ function getUnixTimestamp(date: Date) {
 }
 
 // DOM
-let a: Element | HTMLElement | HTMLParagraphElement;
+// let a: Element | HTMLElement | HTMLParagraphElement;
 const confirmedTotal = $('.confirmed-total') as HTMLSpanElement;
 const deathsTotal = $('.deaths') as HTMLParagraphElement;
 const recoveredTotal = $('.recovered') as HTMLParagraphElement;
