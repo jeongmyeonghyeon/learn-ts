@@ -1,5 +1,3 @@
-// @ts-check
-
 // utils
 function $(selector) {
   return document.querySelector(selector);
@@ -38,17 +36,7 @@ function createSpinnerElement(id) {
 let isDeathLoading = false;
 let isRecoveredLoading = false;
 
-// 이렇게 점진적으로 적용하는 가운데 jsDoc을 활용할 수 있지만,
-// 재사용성면이나 가독성면에서 그 활용도가 많이 떨어지긴 한다.
-/**
- * @typedef {object} CovidSummary
- * @property {Array<object>} Country
- */
-
 // api
-/**
- * @returns {Promise<CovidSummary>}
- */
 function fetchCovidSummary() {
   const url = "https://api.covid19api.com/summary";
   return axios.get(url);
