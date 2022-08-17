@@ -2,8 +2,10 @@
 // import 변수명 from '라이브러리 이름';
 // 변수, 함수 임포트 문법
 // import {} from '파일 상대 경로';
-import axios from 'axios';
+import axios, { AxiosPromise } from 'axios';
 import { Chart } from 'chart.js';
+// 타입 모듈
+import { CovidSummaryResponse } from './covid/index';
 
 // utils
 function $(selector: string) {
@@ -45,7 +47,7 @@ let isDeathLoading = false;
 const isRecoveredLoading = false;
 
 // api
-function fetchCovidSummary() {
+function fetchCovidSummary(): Promise<AxiosPromise<CovidSummaryResponse>> {
   const url = 'https://api.covid19api.com/summary';
   return axios.get(url);
 }
