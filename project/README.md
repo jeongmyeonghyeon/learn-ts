@@ -32,6 +32,14 @@
 
 4. 외부 라이브러리 모듈화
 
+- `node_modules` 하위에 `@types/` 밑에 있는 `index.d.ts` 를 찾아간다.
+  - declaration 파일
+  - [이와 관련한 공식문서 내용](https://www.typescriptlang.org/docs/handbook/module-resolution.html)
+  - [타입 정의가 제공되는 오픈소스 라이브러리 검색 사이트](https://www.typescriptlang.org/dt/search?search=)
+- 때로는 라이브러리 자체에 index.d.ts 가 제공된다. (ex. axios) (이상적인(!) 라이브러리의 구조)
+- 오픈 소스 라이브러리에서 정의되지 않은 타입은 `npm i @types/라이브러리` 명령을 통해 설치할 수 있다. (DefinitelyTyped 레포지토리)
+- 지원이 되지 않는 경우에는 `tsconfig.json` 의 `typeRoots` 설정을 사용해 임의로 직접 정의할 수도 있다.
+
 ## 참고 자료
 
 - [존스 홉킨스 코로나 현황](https://www.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6)
