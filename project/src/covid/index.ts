@@ -27,13 +27,21 @@ export interface CovidSummaryResponse {
   Countries: Country[];
   Date: string;
   Global: Global;
-  // Date: "2022-08-17T11:49:07.387Z"
-  // NewConfirmed: 494450
-  // NewDeaths: 1916
-  // NewRecovered: 0
-  // TotalConfirmed: 590897862
-  // TotalDeaths: 6435963
-  // TotalRecovered: 0
   Message: string;
   ID: string;
 }
+
+interface CountrySummaryInfo {
+  Cases: number;
+  City: string;
+  CityCode: string;
+  Country: string;
+  CountryCode: string;
+  Date: string;
+  Lat: string;
+  Lon: string;
+  Province: string;
+  Status: string;
+}
+
+export type CountrySummaryResponse = CountrySummaryInfo[];
