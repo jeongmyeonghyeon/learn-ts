@@ -14,8 +14,14 @@ import {
 } from './covid/index';
 
 // utils
-function $(selector: string) {
-  return document.querySelector(selector);
+// function $(selector: string) {
+//   return document.querySelector(selector);
+// }
+// 구체적으로 타입을 정의하면서 선언할수 있다는 장점과 일일히 assertion을 주지 않아도 된다는 장점이 있지만
+// 단점도 있다. -> 셀렉터에 전달된 선택자명에 오탈자가 나면 타입 추론이 잘못될 수 있음.
+function $<T extends HTMLElement = HTMLDivElement>(selector: string) {
+  const element = document.querySelector(selector);
+  return element as T;
 }
 function getUnixTimestamp(date: Date | string) {
   return new Date(date).getTime();
@@ -23,13 +29,14 @@ function getUnixTimestamp(date: Date | string) {
 
 // DOM
 // let a: Element | HTMLElement | HTMLParagraphElement;
-const confirmedTotal = $('.confirmed-total') as HTMLSpanElement;
-const deathsTotal = $('.deaths') as HTMLParagraphElement;
-const recoveredTotal = $('.recovered') as HTMLParagraphElement;
-const lastUpdatedTime = $('.last-updated-time') as HTMLParagraphElement;
-const rankList = $('.rank-list') as HTMLOListElement;
-const deathsList = $('.deaths-list') as HTMLOListElement;
-const recoveredList = $('.recovered-list') as HTMLOListElement;
+const temp = $<HTMLParagraphElement>('.paragraph');
+const confirmedTotal = $<HTMLSpanElement>('.confirmed-total');
+const deathsTotal = $<HTMLParagraphElement>('.deaths');
+const recoveredTotal = $<HTMLParagraphElement>('.recovered');
+const lastUpdatedTime = $<HTMLParagraphElement>('.last-updated-time');
+const rankList = $<HTMLOListElement>('.rank-list');
+const deathsList = $<HTMLOListElement>('.deaths-list');
+const recoveredList = $<HTMLOListElement>('.recovered-list');
 const deathSpinner = createSpinnerElement('deaths-spinner');
 const recoveredSpinner = createSpinnerElement('recovered-spinner');
 
