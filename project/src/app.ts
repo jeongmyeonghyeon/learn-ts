@@ -6,7 +6,11 @@ import axios, { AxiosPromise, AxiosResponse } from 'axios';
 import * as ChartJS from 'chart.js';
 import { Chart } from 'chart.js';
 // 타입 모듈
-import { CovidSummaryResponse, CountrySummaryResponse } from './covid/index';
+import {
+  CovidSummaryResponse,
+  CountrySummaryResponse,
+  Country,
+} from './covid/index';
 
 // utils
 function $(selector: string) {
@@ -225,23 +229,23 @@ function setChartData(data: any) {
 
 function setTotalConfirmedNumber(data: CovidSummaryResponse) {
   confirmedTotal.innerText = data.Countries.reduce(
-    (total: any, current: any) => (total += current.TotalConfirmed),
+    (total: number, current: Country) => (total += current.TotalConfirmed),
     0
-  );
+  ).toString();
 }
 
 function setTotalDeathsByWorld(data: any) {
   deathsTotal.innerText = data.Countries.reduce(
-    (total: any, current: any) => (total += current.TotalDeaths),
+    (total: number, current: Country) => (total += current.TotalDeaths),
     0
-  );
+  ).toString();
 }
 
 function setTotalRecoveredByWorld(data: any) {
   recoveredTotal.innerText = data.Countries.reduce(
-    (total: any, current: any) => (total += current.TotalRecovered),
+    (total: number, current: Country) => (total += current.TotalRecovered),
     0
-  );
+  ).toString();
 }
 
 function setCountryRanksByConfirmedCases(data: any) {
