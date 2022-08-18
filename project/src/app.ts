@@ -196,8 +196,10 @@ async function setupData() {
   setLastUpdatedTimestamp(data);
 }
 
-function renderChart(data: any, labels: any) {
-  const ctx = $('#lineChart').getContext('2d');
+function renderChart(data: number[], labels: string[]) {
+  // const ctx = ($('#lineChart') as HTMLCanvasElement).getContext('2d');
+  const lineChart = $('#lineChart') as HTMLCanvasElement;
+  const ctx = lineChart.getContext('2d');
   ChartJS.defaults.color = '#f5eaea';
   if (ChartJS.defaults.font) {
     ChartJS.defaults.font.family = 'Exo 2';
