@@ -27,9 +27,9 @@ const confirmedTotal = $('.confirmed-total') as HTMLSpanElement;
 const deathsTotal = $('.deaths') as HTMLParagraphElement;
 const recoveredTotal = $('.recovered') as HTMLParagraphElement;
 const lastUpdatedTime = $('.last-updated-time') as HTMLParagraphElement;
-const rankList = $('.rank-list');
-const deathsList = $('.deaths-list');
-const recoveredList = $('.recovered-list');
+const rankList = $('.rank-list') as HTMLOListElement;
+const deathsList = $('.deaths-list') as HTMLOListElement;
+const recoveredList = $('.recovered-list') as HTMLOListElement;
 const deathSpinner = createSpinnerElement('deaths-spinner');
 const recoveredSpinner = createSpinnerElement('recovered-spinner');
 
@@ -155,12 +155,20 @@ function setDeathsList(data: CountrySummaryResponse) {
     p.textContent = new Date(value.Date).toLocaleDateString().slice(0, -1);
     li.appendChild(span);
     li.appendChild(p);
+
+    // (1)
+    // if(!deathsList) {
+    //   return;
+    // }
     deathsList.appendChild(li);
   });
 }
 
 function clearDeathList() {
-  deathsList.innerHTML = null;
+  if (!deathsList) {
+    return;
+  }
+  deathsList.innerHTML = '';
 }
 
 function setTotalDeathsByCountry(data: CountrySummaryResponse) {
@@ -182,12 +190,22 @@ function setRecoveredList(data: CountrySummaryResponse) {
     p.textContent = new Date(value.Date).toLocaleDateString().slice(0, -1);
     li.appendChild(span);
     li.appendChild(p);
-    recoveredList.appendChild(li);
+    // 옵셔널 체이닝의 ? 와 삼항연산자의 ? 는 전혀 다른 문법임. ^^;
+    // const num = 10;
+    // const a = num === 10 ? true : false;
+    recoveredList?.appendChild(li);
+
+    // 옵셔널 체이닝을 풀어써 본다면...
+    // if (recoveredList === null || recoveredList === undefined) {
+    //   return;
+    // } else {
+    //   recoveredList.appendChild(li);
+    // }
   });
 }
 
 function clearRecoveredList() {
-  recoveredList.innerHTML = null;
+  recoveredList.innerHTML = '';
 }
 
 function setTotalRecoveredByCountry(data: CountrySummaryResponse) {
@@ -216,7 +234,7 @@ async function setupData() {
 function renderChart(data: number[], labels: string[]) {
   // const ctx = ($('#lineChart') as HTMLCanvasElement).getContext('2d');
   const lineChart = $('#lineChart') as HTMLCanvasElement;
-  const ctx = lineChart.getContext('2d');
+  const ctx = lineChart.getContext('2d')!;
   ChartJS.defaults.color = '#f5eaea';
   if (ChartJS.defaults.font) {
     ChartJS.defaults.font.family = 'Exo 2';
