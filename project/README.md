@@ -32,6 +32,8 @@
 
 4. 외부 라이브러리 모듈화
 
+5. `strict` 옵션 추가 후 타입 정의
+
 - `node_modules` 하위에 `@types/` 밑에 있는 `index.d.ts` 를 찾아간다.
   - declaration 파일
   - [이와 관련한 공식문서 내용](https://www.typescriptlang.org/docs/handbook/module-resolution.html)

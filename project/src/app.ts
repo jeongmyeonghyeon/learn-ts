@@ -64,7 +64,7 @@ enum CovidStatus {
 }
 
 function fetchCountryInfo(
-  countryName: string,
+  countryName: string | undefined,
   status: CovidStatus
 ): Promise<AxiosResponse<CountrySummaryResponse>> {
   // status params: confirmed, recovered, deaths
@@ -81,16 +81,33 @@ function startApp() {
 
 // events
 function initEvents() {
+  if (!rankList) {
+    return;
+  }
   rankList.addEventListener('click', handleListClick);
 }
 
-async function handleListClick(event: MouseEvent) {
+/**
+ 타입스크립트 내장 타입의 위계 구조
+
+ const a: Element;
+ const b: HTMLElement;
+ const c: HTMLDivElement;
+
+ const evt1: Event;
+ const evt2: UIEvent;
+ const evt3: MouseEvent;
+ */
+
+async function handleListClick(event: Event) {
   let selectedId;
   if (
     event.target instanceof HTMLParagraphElement ||
     event.target instanceof HTMLSpanElement
   ) {
-    selectedId = event.target.parentElement.id;
+    selectedId = event.target.parentElement
+      ? event.target.parentElement.id
+      : undefined;
   }
   if (event.target instanceof HTMLLIElement) {
     selectedId = event.target.id;
